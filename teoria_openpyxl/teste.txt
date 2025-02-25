@@ -1,0 +1,62 @@
+Principais funções do openpyxl
+
+Lendo arquivos excel:
+load_workbook('[nome do arquivo]') -> carrega um arquivo xlsx
+Ex: workbook = openpyxl.load_workbook('estoque.xlsx') ou
+workbook = Workbook() -> para instanciar uma classe e em seguida
+workbook = load_workbook('estoque') -> chamando diretamente após a classe ser instanciada
+
+workbook.active -> para obter uma aba da planilha ativa ou
+ws = workbook['estoque 1'] -> para fazer referência a aba da planilha que deseja. funciona da
+mesma forma que com a função 'active'
+
+max_row -> faz referência ao numero de linhas de uma planilha
+max_column -> faz referência ao numero de colunas de uma planilha
+
+ws['A1].value -> para obter o valor de uma célula específica
+
+Escrever em arquivos excel:
+ws['A1'] = 'exemplo' -> para escrever de forma hard code em uma determinada célula da planilha
+ws.cell(row=1, column=11, value = 'valor do estoque') -> para escever em uma célula, usando a função cell
+
+workbook.save('estoque.xlsx')
+
+ws.delete_rows('[numero da linha que deseja excluir], [qtd de linhas que devem ser excluidar]')
+
+Criando formulas em excel:
+ws['P1'] = 'Media do estoque' -> criando a coluna com o nome
+ws['P2'] = '=AVERAGE(K2:K9)' -> Pegando a média de todos os valores da coluna K e jogando na linha ['P2']
+
+ws['Q1'] = 'Numero de registros' -> criando a coluna com o nome
+ws['Q2'] = '=COUNTA(E2:E9) -> conta a quantidade de registros dentro desse intervalo na coluna 'E'
+
+
+Trabalhando com planilhas:
+ws.title = 'Novo titulo' -> para alterar nome da planilha
+
+workbook.sheetnames -> para saber todas as abas da planilha
+
+workbook.create_sheet('Nova aba') -> para criar nova aba
+
+workbook.remove(workbook['Nova aba']) -> para excluir alguma aba
+
+workbook.copy_worksheet(workbook['estoque']) -> para copiar uma das abas da planilha
+workbook.save('novo_estoque.xlsx') -> para salvar em outro arquivo 'xlsx'
+
+cell.coordinate retorna o endereço da célula (A1, B2, C3, etc.)
+
+iter_rows() retorna uma tupla onde cada índice representa a coluna dentro do intervalo definido.
+O primeiro elemento (row[0]) sempre representa a primeira coluna do intervalo (min_col).
+Se min_col=1, max_col=2, então:
+row[0] → Coluna 1 (A)
+row[1] → Coluna 2 (B)
+
+iter_rows()	-> Linha a linha (horizontal) -> Uma tupla com todas as células da linha -> Processar registros linha a linha (ex.: vendas, cadastros, transações)
+iter_cols()	-> Coluna a coluna (vertical) -> Uma tupla com todas as células da coluna -> Processar dados por categoria (ex.: calcular médias de cada coluna)
+Se você quer percorrer todos os produtos de uma tabela, geralmente usa iter_rows().
+Se você quer verificar as estatísticas de uma única coluna, usa iter_cols().
+
+🚀 Resumo:
+
+iter_rows() → Foca na leitura de registros individuais (ex.: cada linha = um pedido).
+iter_cols() → Foca na leitura de categorias de dados (ex.: toda uma coluna de preços).

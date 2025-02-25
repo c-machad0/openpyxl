@@ -1,0 +1,18 @@
+# Ignorar o ambiente virtual
+venv/
+env/
+.venv/
+
+# Ignorar dados da planilha
+.~lock.dados.xlsx#
+
+# Ignorar arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar logs e arquivos temporários
+*.log
+*.tmp
+.DS_Store
