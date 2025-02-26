@@ -60,3 +60,8 @@ Se você quer verificar as estatísticas de uma única coluna, usa iter_cols().
 
 iter_rows() → Foca na leitura de registros individuais (ex.: cada linha = um pedido).
 iter_cols() → Foca na leitura de categorias de dados (ex.: toda uma coluna de preços).
+
+Quando usar Reference?
+Criar gráficos	Para selecionar dados numéricos e rótulos.
+Resumir valores	Para pegar um intervalo de células e calcular soma/média.
+Consolidar dados	Para selecionar valores específicos e escrever em outra aba.
