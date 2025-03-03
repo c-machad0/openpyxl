@@ -43,7 +43,7 @@ workbook.remove(workbook['Nova aba']) -> para excluir alguma aba
 workbook.copy_worksheet(workbook['estoque']) -> para copiar uma das abas da planilha
 workbook.save('novo_estoque.xlsx') -> para salvar em outro arquivo 'xlsx'
 
-cell.coordinate retorna o endereço da célula (A1, B2, C3, etc.)
+cell.coordinate retorna o endereço da célula (A1, B2, C3, etc.) -> é mais usado quando não sabemos a posição exata da célula a ser calculada
 
 iter_rows() retorna uma tupla onde cada índice representa a coluna dentro do intervalo definido.
 O primeiro elemento (row[0]) sempre representa a primeira coluna do intervalo (min_col).
@@ -65,3 +65,7 @@ Quando usar Reference?
 Criar gráficos	Para selecionar dados numéricos e rótulos.
 Resumir valores	Para pegar um intervalo de células e calcular soma/média.
 Consolidar dados	Para selecionar valores específicos e escrever em outra aba.
+
+Método / O que retorna? / Vantagem / Quando usar?
+iter_rows()	-> Tuplas de células ->	Melhor para iterar sobre várias colunas ao mesmo tempo -> Quando precisar acessar várias colunas
+range()	-> Apenas números das linhas -> Melhor controle sobre quais células acessar -> Quando precisar acessar células específicas
