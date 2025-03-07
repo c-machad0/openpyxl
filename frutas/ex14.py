@@ -19,6 +19,7 @@ for aba in abas:
         if isinstance(quantidade, (int, float)):  # Garantir que seja um número
             if produto in quantidade_por_produto: # Verifica se o produto ja existe no dicionário
                 quantidade_por_produto[produto] += quantidade # Se existir, soma a quantidade atual do produto à nova quantidade
+                # O operador += realiza uma soma entre o valor que já está no dicionário e o valor atual de quantidade.
             else:
                 quantidade_por_produto[produto] = quantidade # Caso não exista, o produto será adicionado como nova chave e a quantidade, será a atual da iteração
 
